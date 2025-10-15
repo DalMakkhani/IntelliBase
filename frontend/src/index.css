@@ -1,0 +1,130 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
+All colors MUST be HSL.
+*/
+
+@layer base {
+  :root {
+    /* Terminal Dark Theme - IntelliBase */
+    --background: 230 45% 8%;  /* #0A0E27 - Deep terminal dark */
+    --foreground: 0 0% 88%;    /* #E0E0E0 - Primary text */
+
+    --card: 230 25% 11%;       /* #1A1D2E - Glassmorphic surface */
+    --card-foreground: 0 0% 88%;
+
+    --popover: 230 25% 11%;
+    --popover-foreground: 0 0% 88%;
+
+    --primary: 280 68% 60%;    /* #9D4EDD - Purple "Base" */
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 230 20% 15%;  /* #252836 - Elevated surface */
+    --secondary-foreground: 0 0% 88%;
+
+    --muted: 230 20% 15%;
+    --muted-foreground: 0 0% 63%; /* #A0A0A0 - Secondary text */
+
+    --accent: 280 68% 60%;     /* Purple accent */
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 100% 62%; /* #FF3B3B - Terminal red */
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 0 0% 100% / 0.1; /* Semi-transparent white */
+    --input: 0 0% 100% / 0.1;
+    --ring: 280 68% 60%;
+
+    --radius: 0.5rem;
+
+    /* Terminal Accent Colors */
+    --terminal-green: 133 100% 50%;  /* #00FF41 */
+    --terminal-yellow: 51 100% 50%;  /* #FFD700 */
+    --terminal-red: 0 100% 62%;      /* #FF3B3B */
+    --terminal-blue: 187 100% 50%;   /* #00D9FF */
+
+    /* Brand Colors */
+    --brand-intelli: 0 0% 100%;      /* White */
+    --brand-base: 280 68% 60%;       /* #9D4EDD */
+    --brand-base-dark: 280 68% 47%;  /* #7B2CBF */
+
+    /* Glassmorphism */
+    --glass-bg: 0 0% 100% / 0.05;
+    --glass-border: 0 0% 100% / 0.1;
+
+    /* Sidebar */
+    --sidebar-background: 230 25% 11%;
+    --sidebar-foreground: 0 0% 88%;
+    --sidebar-primary: 280 68% 60%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 230 20% 15%;
+    --sidebar-accent-foreground: 0 0% 88%;
+    --sidebar-border: 0 0% 100% / 0.1;
+    --sidebar-ring: 280 68% 60%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'JetBrains Mono', 'Fira Code', 'Consolas', 'Monaco', monospace;
+  }
+}
+
+/* Terminal Animations */
+@keyframes blink {
+  0%, 50% { opacity: 1; }
+  51%, 100% { opacity: 0; }
+}
+
+@keyframes terminalFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes terminalGlow {
+  0%, 100% { 
+    box-shadow: 0 0 5px hsl(var(--primary) / 0.3);
+  }
+  50% { 
+    box-shadow: 0 0 20px hsl(var(--primary) / 0.6);
+  }
+}
+
+/* Terminal Utilities */
+.terminal-prompt::before {
+  content: "> ";
+  color: hsl(var(--terminal-green));
+}
+
+.blinking-cursor::after {
+  content: "_";
+  animation: blink 1s infinite;
+}
+
+.terminal-border {
+  border: 1px dashed hsl(var(--glass-border));
+}
+
+.glass-card {
+  background: hsl(var(--glass-bg));
+  backdrop-filter: blur(10px);
+  border: 1px solid hsl(var(--glass-border));
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+}
+
+.terminal-glow {
+  animation: terminalGlow 2s ease-in-out infinite;
+}
