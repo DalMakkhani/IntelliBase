@@ -2,19 +2,39 @@
 
 IntelliBase is an intelligent document search and question-answering system that uses **Retrieval-Augmented Generation (RAG)** to help users extract insights from their PDF documents.
 
-## 🌟 Features
+## Features
 
-- **🔐 Secure Authentication** - JWT-based user authentication with bcrypt password hashing
-- **📄 PDF Document Upload** - Upload and process multiple PDF files
-- **🧠 Smart RAG Pipeline** - Automatic text extraction, chunking, and embedding generation
-- **💬 Intelligent Chat** - Ask questions about your documents and get accurate answers with citations
-- **📚 Document Collections** - Organize documents in main corpus or isolated collections
-- **🎯 Citation Tracking** - Every AI response includes source document citations
-- **⚡ Real-time Processing** - Background document processing with status tracking
-- **🔍 Semantic Search** - Advanced vector similarity search using Pinecone
-- **📱 Modern UI** - Clean, responsive React interface with shadcn/ui components
+### Authentication & Security
+- **Secure Authentication** - JWT-based user authentication with bcrypt password hashing
+- **Protected Routes** - Token-based API access control
 
-## 🏗️ Architecture
+### Document Management
+- **PDF Document Upload** - Upload and process multiple PDF files
+- **Smart RAG Pipeline** - Automatic text extraction, chunking, and embedding generation
+- **Document Collections** - Organize documents in main corpus or isolated collections
+- **Real-time Processing** - Background document processing with status tracking
+
+### Intelligent Chat
+- **Multiple Session Modes** - Choose between Casual, Study, and Research modes:
+  - **Casual Mode** - Balanced responses combining your documents with web search for comprehensive answers
+  - **Study Mode** - Focused learning experience with warm, encouraging tone. Perfect for exam prep with flashcard generation and quiz features
+  - **Research Mode** - In-depth analysis with comprehensive citations and web-enhanced research
+- **Citation Tracking** - Every AI response includes source document citations with page numbers
+- **Interactive Flashcards** - Generate and review flip-style flashcards from your study materials (Study mode)
+- **Web-Enhanced Answers** - Combines corpus knowledge with real-time web search (Casual & Research modes)
+- **Smart Relevance Detection** - Automatically determines when to use web search vs. document corpus
+
+### Search & Retrieval
+- **Semantic Search** - Advanced vector similarity search using Pinecone
+- **Context-Aware Responses** - LLM-based relevance checking for accurate answers
+- **Comprehensive Mode** - Deeper document search for complex queries
+
+### User Interface
+- **Modern UI** - Clean, responsive React interface with shadcn/ui components
+- **PDF Viewer** - In-app document viewing with page navigation
+- **Session Management** - Create, view, and organize chat sessions
+
+## Architecture
 
 ### Backend (FastAPI + Python)
 - **FastAPI** - High-performance web framework
@@ -32,7 +52,7 @@ IntelliBase is an intelligent document search and question-answering system that
 - **Vite** - Fast build tool
 - **Axios** - API client with JWT interceptors
 
-## 📋 Prerequisites
+## Prerequisites
 
 - **Python 3.9+** (backend)
 - **Node.js 18+** (frontend)
@@ -41,7 +61,7 @@ IntelliBase is an intelligent document search and question-answering system that
 - **Jina AI API Key** (free tier works)
 - **Groq API Key** (free tier works)
 
-## 🚀 Quick Start
+## Quick Start
 
 ### 1. Clone and Setup Environment
 
@@ -137,7 +157,7 @@ npm run dev
 - **Backend API:** http://localhost:8000
 - **API Docs:** http://localhost:8000/docs
 
-## 📖 Usage
+## Usage
 
 ### 1. Create Account
 1. Go to http://localhost:8080
@@ -154,9 +174,11 @@ npm run dev
 
 ### 3. Chat with Your Documents
 1. Navigate to "Chat" page
-2. Ask questions about your documents
-3. Get AI-powered answers with citations
-4. View source documents for each answer
+2. Select a session mode (Casual, Study, or Research)
+3. Ask questions about your documents
+4. Get AI-powered answers with citations
+5. In Study mode, request flashcards to generate interactive review materials
+6. View source documents for each answer
 
 ### 4. Manage Sessions
 - Create new chat sessions
@@ -164,7 +186,7 @@ npm run dev
 - Delete old sessions
 - Auto-generated session titles
 
-## 🔧 API Endpoints
+## API Endpoints
 
 ### Authentication
 - `POST /auth/signup` - Create new user
@@ -184,7 +206,7 @@ npm run dev
 - `POST /chat/sessions/new` - Create new session
 - `DELETE /chat/sessions/{id}` - Delete session
 
-## 🧪 RAG Pipeline Details
+## RAG Pipeline Details
 
 ### Document Processing Flow
 1. **Upload** - PDF file saved to disk
@@ -210,7 +232,7 @@ npm run dev
      - Helpful general response
 4. **Session Storage** - Save message to MongoDB
 
-## 📁 Project Structure
+## Project Structure
 
 ```
 IntelliBase/
@@ -245,7 +267,13 @@ IntelliBase/
 ├── requirements.txt          # Python dependencies
 ├── start-backend.ps1         # Backend startup script
 ├── start-frontend.ps1        # Frontend startup script
+```
 └── README.md                 # This file
+```
+
+## Security Best Practices
+
+1. **Never commit `.env`** - Already in `.gitignore`
 ```
 
 ## 🔐 Security Best Practices
@@ -257,7 +285,7 @@ IntelliBase/
 5. **Input Validation** - All inputs validated with Pydantic
 6. **Password Security** - Bcrypt with automatic salting
 
-## 🚨 Troubleshooting
+## Troubleshooting
 
 ### Backend won't start
 ```bash
@@ -302,13 +330,13 @@ npm run dev
 - Verify Jina AI API key is valid
 - Check backend logs for detailed error
 
-## 📚 API Documentation
+## API Documentation
 
 Interactive API documentation available at:
 - **Swagger UI:** http://localhost:8000/docs
 - **ReDoc:** http://localhost:8000/redoc
 
-## 🎯 IntelliBase System Prompt
+## IntelliBase System Prompt
 
 The AI uses a comprehensive system prompt defining its identity as a knowledge retrieval assistant. It emphasizes:
 - Accurate citations from source documents
@@ -316,13 +344,13 @@ The AI uses a comprehensive system prompt defining its identity as a knowledge r
 - Clear distinction between facts and inferences
 - Helpful responses with and without documents
 
-## 🔄 Data Retention
+## Data Retention
 
 - **Documents:** Auto-expire after 30 days (configurable)
 - **Chat Sessions:** Auto-expire after 30 days (MongoDB TTL index)
 - **User Accounts:** No expiration (manual deletion required)
 
-## 📊 Technology Stack
+## Technology Stack
 
 | Component | Technology | Purpose |
 |-----------|-----------|---------|
@@ -336,15 +364,15 @@ The AI uses a comprehensive system prompt defining its identity as a knowledge r
 | Frontend | React + TypeScript | Modern UI |
 | Styling | Tailwind + shadcn/ui | Beautiful components |
 
-## 🤝 Contributing
+## Contributing
 
 This is a private project. For questions or issues, contact the development team.
 
-## 📝 License
+## License
 
 Proprietary - All rights reserved
 
-## 🙏 Acknowledgments
+## Acknowledgments
 
 - Groq for fast LLM inference
 - Jina AI for embeddings
