@@ -1,6 +1,7 @@
 # IntelliBase - AI-Powered Knowledge Base with RAG
 
 IntelliBase is an intelligent document search and question-answering system that uses **Retrieval-Augmented Generation (RAG)** to help users extract insights from their PDF documents.
+
 Click here to watch a demo: https://drive.google.com/file/d/1Jom9uLH9CyjqnIWfkDGEA8kXVUoJ4p2s/view?usp=drive_link
 
 ## Features
